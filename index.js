@@ -1,20 +1,17 @@
-const { crawlPage } = require('./crawl/crawl')
+const { crawlPage } = require('./crawl/crawl');
 
-function main() {
-  if (process.argv.length < 3) {
-    console.log("No website provided")
-    process.exit(1)
-  }
+const main = async () => {
+  const baseUrl = 'https://webandcrafts.com/';
+  const pages = {};
 
-  if (process.argv.length > 3) {
-    console.log("Too many arguments")
-    process.exit(1)
-  }
+  console.log(`Started crawling '${baseUrl}'...`);
 
-  const baseUrl = process.argv[2]
+  await crawlPage(baseUrl, baseUrl, pages);
 
-  console.log(`Crawling '${baseUrl}'...`)
-  crawlPage(baseUrl)
-}
+  console.log('Crawling complete.');
+  console.log(pages);
+};
 
-main()
+main().catch(err => {
+  console.error('Error in main function:', err);
+});
