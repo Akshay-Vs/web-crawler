@@ -1,7 +1,7 @@
 const { crawlPage } = require('./crawl/crawl');
 
 const main = async () => {
-  const baseUrl = 'https://webandcrafts.com/';
+  const baseUrl = 'https://xyz.com/';
   const pages = {};
 
   console.log(`Started crawling '${baseUrl}'...`);
